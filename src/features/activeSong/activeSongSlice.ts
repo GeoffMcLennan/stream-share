@@ -9,7 +9,8 @@ export interface ActiveSongState {
     albumName: string;
     liked: boolean;
     progress: number;
-    playing: boolean; 
+    playing: boolean;
+    shuffle: boolean; 
 }
 
 const initialState: ActiveSongState = {
@@ -20,6 +21,7 @@ const initialState: ActiveSongState = {
     liked: false,
     playing: false,
     progress: 0,
+    shuffle: false,
 }
 
 export const activeSongSlice = createSlice({
@@ -32,12 +34,15 @@ export const activeSongSlice = createSlice({
         togglePlaying: (state) => {
             state.playing = !state.playing;
         },
+        toggleShuffle: (state) => {
+            state.shuffle = !state.shuffle;
+        },
         
     },
     extraReducers: {},
 })
 
 
-export const { toggleLiked, togglePlaying } = activeSongSlice.actions;
+export const { toggleLiked, togglePlaying, toggleShuffle } = activeSongSlice.actions;
 
 export default activeSongSlice.reducer;
