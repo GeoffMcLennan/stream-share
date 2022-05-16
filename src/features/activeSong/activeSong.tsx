@@ -53,9 +53,20 @@ export function ActiveSong() {
         </Grid>
 
         <Grid item xs={12}> 
-        <Slider defaultValue={activeSong.progress}
-         aria-label="Default" valueLabelDisplay="auto" />
+        <Slider defaultValue={activeSong.progress} max={activeSong.songLength}
+         aria-label="Default" valueLabelDisplay="auto"
+          valueLabelFormat={(songLengthValue) => {
+            const minutes = Math.floor(songLengthValue / 60);
+            let seconds: number | string = songLengthValue % 60;
+
+            if (seconds < 10) {
+              seconds = '0' + seconds
+            }
+            
+            return `${minutes}:${seconds}`
+            }} />
         </Grid>
+
         <ControlBar/>
       </Grid>
     </div>

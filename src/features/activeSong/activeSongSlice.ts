@@ -10,7 +10,8 @@ export interface ActiveSongState {
     liked: boolean;
     progress: number;
     playing: boolean;
-    shuffle: boolean; 
+    shuffle: boolean;
+    songLength: number;
 }
 
 const initialState: ActiveSongState = {
@@ -22,6 +23,7 @@ const initialState: ActiveSongState = {
     playing: false,
     progress: 0,
     shuffle: false,
+    songLength: 120,
 }
 
 export const activeSongSlice = createSlice({
