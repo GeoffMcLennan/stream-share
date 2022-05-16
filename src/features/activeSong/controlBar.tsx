@@ -48,7 +48,6 @@ export function ControlBar() {
                 </Button>
             </Grid>
         </Grid>
-
     );
 
 }

@@ -23,7 +23,7 @@ export function ActiveSong() {
           }}>
           <Toolbar>
             <Typography className="activeSongText" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {activeSong.albumName}
+              {activeSong.song.albumName}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -31,16 +31,16 @@ export function ActiveSong() {
 
       <Grid container>
         <Grid item xs={12}>
-          <img src={activeSong.albumArt} />
+          <img src={activeSong.song.albumArt} />
         </Grid>
 
         <Grid container item xs={12}>
           <Grid container item xs={10}>
             <Grid item xs={12}>
-              {activeSong.title}
+              {activeSong.song.title}
             </Grid>
             <Grid item xs={12}>
-              {activeSong.artist}
+              {activeSong.song.artist}
             </Grid>
           </Grid>
 
@@ -53,7 +53,7 @@ export function ActiveSong() {
         </Grid>
 
         <Grid item xs={12}> 
-        <Slider defaultValue={activeSong.progress} max={activeSong.songLength}
+        <Slider defaultValue={activeSong.progress} max={activeSong.song.songLength}
          aria-label="Default" valueLabelDisplay="auto"
           valueLabelFormat={(songLengthValue) => {
             const minutes = Math.floor(songLengthValue / 60);
