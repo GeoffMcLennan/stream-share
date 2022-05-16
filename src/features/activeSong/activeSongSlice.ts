@@ -1,11 +1,10 @@
 import { BooleanLiteral, SourceMapRange } from 'typescript';
 import { RootState, AppThunk } from '../../app/store';
 import {createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SongObject } from './songInterface';
+import { Song } from '../data/song';
 
 export interface ActiveSongState {
-    song: SongObject;
-
+    song: Song;
     liked: boolean;
     progress: number;
     playing: boolean;
