@@ -1,6 +1,6 @@
 import { BooleanLiteral, SourceMapRange } from 'typescript';
 import { RootState, AppThunk } from '../../app/store';
-import {createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Song } from '../data/song';
 
 export interface ActiveSongState {
@@ -42,7 +42,14 @@ export const activeSongSlice = createSlice({
         },
         
     },
-    extraReducers: {},
+    extraReducers: (builder) => {
+            builder.addCase(createAction('activeQueueState/nextSong'), (state, action) => {
+                
+                if (action && action.payload) {
+                    state.song = action.payload;
+                }
+            } )
+    },
 })
 
 

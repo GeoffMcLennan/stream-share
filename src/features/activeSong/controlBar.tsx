@@ -8,9 +8,12 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import LoopIcon from '@mui/icons-material/Loop';
 import { togglePlaying, toggleShuffle } from "./activeSongSlice";
+import { nextSong } from "../data/songQueue";
+import { current } from "@reduxjs/toolkit";
 
 export function ControlBar() {
     const activeSong = useAppSelector(state => state.activeSong);
+    const activeQueue = useAppSelector(state => state.activeQueue);
     const dispatch = useAppDispatch();
 
     return (
@@ -37,7 +40,10 @@ export function ControlBar() {
             </Grid>
 
             <Grid item xs={2}>
-                <Button>
+                <Button onClick ={() => {
+                    let incrementSong = activeQueue.songQueue[activeQueue.currentIndex + 1];
+                    dispatch(nextSong(incrementSong));
+                }}>
                     <SkipNextIcon />
                 </Button>
             </Grid>
