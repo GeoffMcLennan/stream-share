@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import activeSongReducer from '../features/activeSong/activeSongSlice';
 import activeQueueReducer from '../features/data/songQueue';
+import displayAlbumReducer from '../features/album/albumSlice';
 
 export const store = configureStore({
   reducer: {
     activeSong: activeSongReducer,
     activeQueue:  activeQueueReducer,
+    displayAlbum: displayAlbumReducer,
   },
 });
 
