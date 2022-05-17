@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route index element={<Homepage />} />
             <Route path='/play' element={<ActiveSong />} />
-            <Route path='/album' element={<AlbumPage />} />
+            <Route path='/a/:albumId' element={<AlbumPage />} />
           </Routes>
         </Router>
     </div>
