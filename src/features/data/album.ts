@@ -1,13 +1,23 @@
 import { Song } from "./song";
 
 export interface Album {
-  albumId: string;
-  albumName: string;
-  artistName: string;
-  albumArt: string;
-  albumYear: string;
-  liked: boolean;
-  songs: Array<Song>;
+  readonly albumId: string;
+  readonly albumName: string;
+  readonly artistName: string;
+  readonly albumArt: string;
+  readonly albumYear: string;
+  readonly liked: boolean;
+  readonly songs: Array<Song>;
+}
+
+export const EMPTY_ALBUM: Album = {
+  albumId: '',
+  albumName: '',
+  artistName: '',
+  albumArt: '',
+  albumYear: '',
+  liked: false,
+  songs: [],
 }
 
 export const Albums: Record<string, Album> = {

@@ -19,7 +19,7 @@ export const loadAlbum = createAsyncThunk(
       console.log('Invalid request, must supply albumId')
       throw new Error('Invalid request, must supply albumId');
     }
-    delay(5000)
+    await delay(2000)
     const album = Albums[albumId];
     if (!album) {
       console.log(`Could not find album ${albumId}`)
