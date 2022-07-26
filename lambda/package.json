@@ -1,0 +1,21 @@
+{
+  "name": "@stream-share/lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./esbuild.js",
+    "build:watch": "node ./esbuild.js --watch",
+    "link": "npm link",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aws-sdk/types": "^3.127.0",
+    "@types/aws-lambda": "^8.10.85",
+    "@types/node": "^16.11.45",
+    "aws-sdk": "^2.1044.0",
+    "esbuild": "^0.14.1"
+  }
+}

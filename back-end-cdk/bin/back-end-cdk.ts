@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
+import 'dotenv/config';
 import * as cdk from 'aws-cdk-lib';
 import { BackEndCdkStack } from '../lib/back-end-cdk-stack';
-import 'dotenv/config';
 import { MediaBucketStack } from '../lib/media-bucket-stack';
 import { CoreDatabaseStack } from '../lib/core-database-stack';
 import { CoreLambdaAPIStack } from '../lib/core-lamda-api-stack';
+import { Stage } from 'aws-cdk-lib';
 
 const app = new cdk.App();
 // new BackEndCdkStack(app, 'BackEndCdkStack', {
@@ -26,16 +27,23 @@ const app = new cdk.App();
 //   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 // });
 
-const lambdaStack = new CoreLambdaAPIStack(app, 'CoreLambdaStack', {
+console.log({ account: process.env.AWS_ACCOUNT_ID, region: process.env.AWS_DEFAULT_REGION, stage: process.env.STAGE, })
+
+const databaseStack = new CoreDatabaseStack(app, 'CoreDatabaseStack', {
   env: { account: process.env.AWS_ACCOUNT_ID, region: process.env.AWS_DEFAULT_REGION },
+  tags: { app: 'stream-share', },
+})
+
+const lambdaStack = new CoreLambdaAPIStack(app, 'CoreLambdaStack', {
+  databaseStack,
+  stage: process.env.STAGE || 'pre-prod',
+  env: { account: process.env.AWS_ACCOUNT_ID, region: process.env.AWS_DEFAULT_REGION },
+  tags: { app: 'stream-share', },
 })
 
 new MediaBucketStack(app, 'MediaBucketStack', { 
   env: { account: process.env.AWS_ACCOUNT_ID, region: process.env.AWS_DEFAULT_REGION },
+  stage: process.env.STAGE || 'pre-prod',
+  tags: { app: 'stream-share', },
 });
-
-new CoreDatabaseStack(app, 'CoreDatabaseStack', {
-  lambdaStack,
-  env: { account: process.env.AWS_ACCOUNT_ID, region: process.env.AWS_DEFAULT_REGION },
-})
 

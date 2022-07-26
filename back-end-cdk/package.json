@@ -1,5 +1,5 @@
 {
-  "name": "back-end-cdk",
+  "name": "@stream-share/back-end-cdk",
   "version": "0.1.0",
   "bin": {
     "back-end-cdk": "bin/back-end-cdk.js"
@@ -7,6 +7,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
+    "link": "npm link @stream-share/lambda",
     "test": "jest",
     "cdk": "cdk"
   },

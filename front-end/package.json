@@ -1,5 +1,5 @@
 {
-  "name": "stream-share",
+  "name": "@stream-share/front-end",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
